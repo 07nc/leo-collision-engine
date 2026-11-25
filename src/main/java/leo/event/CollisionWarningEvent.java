@@ -13,12 +13,14 @@ public class CollisionWarningEvent {
     public final long tick;
     public final Severity severity;
 
+    public static final double CRITICAL_THRESHOLD = 20.0;
+
     public CollisionWarningEvent(String entityAId, String entityBId, double distance, long tick) {
         this.entityAId = entityAId;
         this.entityBId = entityBId;
         this.distance = distance;
         this.tick = tick;
-        this.severity = (distance < 50.0) ? Severity.CRITICAL : Severity.WARNING;
+        this.severity = (distance < CRITICAL_THRESHOLD) ? Severity.CRITICAL : Severity.WARNING;
     }
 
     @Override
